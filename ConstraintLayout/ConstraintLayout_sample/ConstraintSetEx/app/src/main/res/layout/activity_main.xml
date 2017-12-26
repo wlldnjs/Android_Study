@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraint"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="kimjiwon.sigongeducation.constraintsetex.MainActivity">
+
+    <Button
+        android:id="@+id/menuBtn"
+        android:layout_width="80dp"
+        android:layout_height="70dp"
+        android:background="@color/gray01"
+        android:clickable="true"
+        android:text="메뉴"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintRight_toLeftOf="@+id/menuBar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="80dp"
+        android:layout_height="140dp"
+        android:background="@color/black"
+        app:layout_constraintRight_toRightOf="@+id/menuBtn"
+        app:layout_constraintTop_toBottomOf="@+id/menuBtn" />
+
+    <ImageButton
+        android:id="@+id/studyHelperBtn"
+        android:layout_width="79dp"
+        android:layout_height="69dp"
+        android:background="@color/offwhite"
+        android:src="@drawable/ss_ic_study_helper"
+        app:layout_constraintRight_toRightOf="@+id/menuBtn"
+        app:layout_constraintTop_toBottomOf="@+id/menuBtn" />
+
+    <Button
+        android:id="@+id/keypadBtn"
+        android:layout_width="79dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/yellow01"
+        android:text="키패드"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintRight_toRightOf="@+id/menuBtn"
+        app:layout_constraintTop_toBottomOf="@+id/studyHelperBtn" />
+
+
+    <include
+        android:id="@+id/menuBar"
+        layout="@layout/menu_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></include>
+
+    <Button
+        android:id="@+id/changeViewBtn"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:text="화면\n전환"
+        android:textSize="20sp"
+        android:background="@color/cyongray02"
+        />
+
+</android.support.constraint.ConstraintLayout>

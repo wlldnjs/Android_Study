@@ -1,0 +1,1039 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cyongray_02">
+
+    <ImageView
+        android:id="@+id/imageView_background"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/divider2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="41dp"
+        android:layout_marginTop="29dp"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="23sp"
+        android:text="4강"
+        android:textColor="@color/mainblue_03"
+        android:textSize="23sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/divider1"
+        android:layout_width="35dp"
+        android:layout_height="2dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/mainblue_03"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <ImageView
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_marginRight="31dp"
+        android:layout_marginTop="18dp"
+        android:src="@drawable/ic_close_black"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="76dp"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="10sp"
+        android:maxWidth="707dp"
+        android:text="Good evening, welcome to the channel 2 evening news. I‘m fine thank you and you?"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="14dp"
+        android:layout_marginTop="119dp"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="14sp"
+        android:text="총 강의시간"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintRight_toLeftOf="@+id/textView8"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="41dp"
+        android:layout_marginTop="120dp"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="14sp"
+        android:text="56분"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="43dp"
+        android:layout_marginTop="14dp"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="19sp"
+        android:text="*이투스me 제휴강좌"
+        android:textColor="@color/gray_04"
+        android:textSize="15sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <ImageView
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="189dp"
+        android:background="@color/cyongray_deep_04"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--첫 번째 상자-->
+
+    <ImageView
+        android:layout_width="270dp"
+        android:layout_height="8dp"
+        android:layout_marginTop="272dp"
+        android:background="@drawable/list_card_shadow"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box1"
+        app:layout_constraintRight_toRightOf="@id/imageView_box1"
+        app:layout_constraintTop_toTopOf="@id/divider2" />
+
+    <ImageView
+        android:id="@+id/imageView_box1"
+        android:layout_width="270dp"
+        android:layout_height="235dp"
+        android:layout_marginLeft="67dp"
+        android:layout_marginTop="41dp"
+        android:background="@drawable/bg_list_card_normal"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/imageView_box2"
+        app:layout_constraintTop_toBottomOf="@id/divider2" />
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="5dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/top_side_rectangle_blue"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box1"
+        app:layout_constraintRight_toRightOf="@id/imageView_box1"
+        app:layout_constraintTop_toTopOf="@id/imageView_box1" />
+
+    <TextView
+        android:id="@+id/box_title1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="32dp"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="21sp"
+        android:text="개념"
+        android:textColor="@color/blue_down_02"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box1"
+        app:layout_constraintTop_toTopOf="@id/imageView_box1" />
+
+    <TextView
+        android:id="@+id/box_content1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="69dp"
+        android:ellipsize="end"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="10sp"
+        android:maxLines="2"
+        android:maxWidth="195dp"
+        android:text="점, 선, 면의 이해"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box1"
+        app:layout_constraintTop_toTopOf="@id/imageView_box1" />
+
+    <TextView
+        android:id="@+id/box_time1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="35dp"
+        android:layout_marginLeft="25dp"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="7sp"
+        android:text="총시간 01:25"
+        android:textColor="@color/gray_02"
+        android:textSize="17sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="@id/imageView_box1"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box1" />
+
+    <ImageView
+        android:id="@+id/box_play_btn1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="87dp"
+        android:src="@drawable/ic_play_black"
+        app:layout_constraintBottom_toBottomOf="@id/box_time1"
+        app:layout_constraintLeft_toRightOf="@id/box_time1"
+        app:layout_constraintTop_toTopOf="@id/box_time1" />
+
+    <TextView
+        android:id="@+id/box_start_time1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="14dp"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="4sp"
+        android:text="시작 00:00"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box1"
+        app:layout_constraintTop_toBottomOf="@id/imageView_box1" />
+
+    <ImageView
+        android:id="@+id/box_divider1"
+        android:layout_width="1dp"
+        android:layout_height="18dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="13dp"
+        android:background="@color/cyongray_deep_04"
+        app:layout_constraintLeft_toRightOf="@id/box_start_time1"
+        app:layout_constraintTop_toBottomOf="@id/imageView_box1" />
+
+    <TextView
+        android:id="@+id/box_page1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="4sp"
+        android:text="교재 23~63p"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintLeft_toRightOf="@+id/box_divider1"
+        app:layout_constraintTop_toTopOf="@id/box_start_time1" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="184dp"
+        android:layout_marginLeft="225dp"
+        android:src="@drawable/img_checkstamp"
+        app:layout_constraintBottom_toBottomOf="@id/imageView_box1"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box1" />
+
+    <!--두 번째 상자-->
+
+    <ImageView
+        android:layout_width="270dp"
+        android:layout_height="8dp"
+        android:layout_marginTop="272dp"
+        android:background="@drawable/list_card_shadow"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box2"
+        app:layout_constraintRight_toRightOf="@id/imageView_box2"
+        app:layout_constraintTop_toTopOf="@id/divider2" />
+
+    <ImageView
+        android:id="@+id/imageView_box2"
+        android:layout_width="270dp"
+        android:layout_height="235dp"
+        android:layout_marginTop="41dp"
+        android:background="@drawable/bg_list_card_normal"
+        app:layout_constraintLeft_toRightOf="@+id/imageView_box1"
+        app:layout_constraintRight_toLeftOf="@id/imageView_box3"
+        app:layout_constraintTop_toBottomOf="@id/divider2" />
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="5dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/top_side_rectangle_blue"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box2"
+        app:layout_constraintRight_toRightOf="@id/imageView_box2"
+        app:layout_constraintTop_toTopOf="@id/imageView_box2" />
+
+    <TextView
+        android:id="@+id/box_title2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="32dp"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="21sp"
+        android:text="개념"
+        android:textColor="@color/blue_down_02"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box2"
+        app:layout_constraintTop_toTopOf="@id/imageView_box2" />
+
+    <TextView
+        android:id="@+id/box_content2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="69dp"
+        android:ellipsize="end"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="10sp"
+        android:maxLines="2"
+        android:maxWidth="195dp"
+        android:text="점, 선, 면의 이해와 두줄 길이의 제목..."
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box2"
+        app:layout_constraintTop_toTopOf="@id/imageView_box2" />
+
+    <TextView
+        android:id="@+id/box_time2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="35dp"
+        android:layout_marginLeft="25dp"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="7sp"
+        android:text="총시간 01:25"
+        android:textColor="@color/gray_02"
+        android:textSize="17sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="@id/imageView_box2"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box2" />
+
+    <ImageView
+        android:id="@+id/box_play_btn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="87dp"
+        android:src="@drawable/ic_play_black"
+        app:layout_constraintBottom_toBottomOf="@id/box_time2"
+        app:layout_constraintLeft_toRightOf="@id/box_time2"
+        app:layout_constraintTop_toTopOf="@id/box_time2" />
+
+    <TextView
+        android:id="@+id/box_start_time2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="14dp"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="4sp"
+        android:text="시작 00:00"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box2"
+        app:layout_constraintTop_toBottomOf="@id/imageView_box2" />
+
+    <ImageView
+        android:id="@+id/box_divider2"
+        android:layout_width="1dp"
+        android:layout_height="18dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="13dp"
+        android:background="@color/cyongray_deep_04"
+        app:layout_constraintLeft_toRightOf="@id/box_start_time2"
+        app:layout_constraintTop_toBottomOf="@id/imageView_box2" />
+
+    <TextView
+        android:id="@+id/box_page2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="4sp"
+        android:text="교재 23~63p"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintLeft_toRightOf="@+id/box_divider2"
+        app:layout_constraintTop_toTopOf="@id/box_start_time2" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="184dp"
+        android:layout_marginLeft="225dp"
+        android:src="@drawable/img_checkstamp"
+        app:layout_constraintBottom_toBottomOf="@id/imageView_box2"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box2" />
+
+    <!--세 번째 상자-->
+    <ImageView
+        android:layout_width="270dp"
+        android:layout_height="8dp"
+        android:layout_marginTop="272dp"
+        android:background="@drawable/list_card_shadow"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box3"
+        app:layout_constraintRight_toRightOf="@id/imageView_box3"
+        app:layout_constraintTop_toTopOf="@id/divider2" />
+
+    <ImageView
+        android:id="@+id/imageView_box3"
+        android:layout_width="270dp"
+        android:layout_height="235dp"
+        android:layout_marginTop="41dp"
+        android:background="@drawable/bg_list_card_normal"
+        app:layout_constraintLeft_toRightOf="@+id/imageView_box2"
+        app:layout_constraintRight_toLeftOf="@id/imageView_box4"
+        app:layout_constraintTop_toBottomOf="@id/divider2" />
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="5dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/top_side_rectangle_blue"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box3"
+        app:layout_constraintRight_toRightOf="@id/imageView_box3"
+        app:layout_constraintTop_toTopOf="@id/imageView_box3" />
+
+    <TextView
+        android:id="@+id/box_title3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="32dp"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="21sp"
+        android:text="개념"
+        android:textColor="@color/blue_down_02"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box3"
+        app:layout_constraintTop_toTopOf="@id/imageView_box3" />
+
+    <TextView
+        android:id="@+id/box_content3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="69dp"
+        android:ellipsize="end"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="10sp"
+        android:maxLines="2"
+        android:maxWidth="195dp"
+        android:text="점, 선, 면의 이해와 두줄 길이의 제목..."
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box3"
+        app:layout_constraintTop_toTopOf="@id/imageView_box3" />
+
+    <TextView
+        android:id="@+id/box_time3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="35dp"
+        android:layout_marginLeft="25dp"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="7sp"
+        android:text="총시간 01:25"
+        android:textColor="@color/gray_02"
+        android:textSize="17sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="@id/imageView_box3"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box3" />
+
+    <ImageView
+        android:id="@+id/box_play_btn3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="87dp"
+        android:src="@drawable/ic_play_black"
+        app:layout_constraintBottom_toBottomOf="@id/box_time3"
+        app:layout_constraintLeft_toRightOf="@id/box_time3"
+        app:layout_constraintTop_toTopOf="@id/box_time3" />
+
+    <TextView
+        android:id="@+id/box_start_time3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="14dp"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="4sp"
+        android:text="시작 00:00"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box3"
+        app:layout_constraintTop_toBottomOf="@id/imageView_box3" />
+
+    <ImageView
+        android:id="@+id/box_divider3"
+        android:layout_width="1dp"
+        android:layout_height="18dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="13dp"
+        android:background="@color/cyongray_deep_04"
+        app:layout_constraintLeft_toRightOf="@id/box_start_time3"
+        app:layout_constraintTop_toBottomOf="@id/imageView_box3" />
+
+    <TextView
+        android:id="@+id/box_page3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="4sp"
+        android:text="교재 23~63p"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintLeft_toRightOf="@+id/box_divider3"
+        app:layout_constraintTop_toTopOf="@id/box_start_time3" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="184dp"
+        android:layout_marginLeft="225dp"
+        android:src="@drawable/img_checkstamp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@id/imageView_box3"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box3" />
+
+    <!--네 번째 상자-->
+    <ImageView
+        android:layout_width="270dp"
+        android:layout_height="8dp"
+        android:layout_marginTop="272dp"
+        android:background="@drawable/list_card_shadow"
+        android:visibility="invisible"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box4"
+        app:layout_constraintRight_toRightOf="@id/imageView_box4"
+        app:layout_constraintTop_toTopOf="@id/divider2" />
+
+    <ImageView
+        android:id="@+id/imageView_box4"
+        android:layout_width="270dp"
+        android:layout_height="235dp"
+        android:layout_marginRight="67dp"
+        android:layout_marginTop="41dp"
+        android:background="@drawable/bg_list_card_pressed"
+        app:layout_constraintLeft_toRightOf="@+id/imageView_box3"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider2" />
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="5dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/top_side_rectangle_blue"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box4"
+        app:layout_constraintRight_toRightOf="@id/imageView_box4"
+        app:layout_constraintTop_toTopOf="@id/imageView_box4" />
+
+    <TextView
+        android:id="@+id/box_title4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="32dp"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="21sp"
+        android:text="개념"
+        android:textColor="@color/blue_down_02"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box4"
+        app:layout_constraintTop_toTopOf="@id/imageView_box4" />
+
+    <TextView
+        android:id="@+id/box_content4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="69dp"
+        android:ellipsize="end"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="10sp"
+        android:maxLines="2"
+        android:maxWidth="195dp"
+        android:text="점, 선, 면의 이해"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box4"
+        app:layout_constraintTop_toTopOf="@id/imageView_box4" />
+
+    <TextView
+        android:id="@+id/box_time4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="35dp"
+        android:layout_marginLeft="25dp"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="7sp"
+        android:text="총시간 01:25"
+        android:textColor="@color/gray_02"
+        android:textSize="17sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="@id/imageView_box4"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box4" />
+
+    <ImageView
+        android:id="@+id/box_play_btn4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="87dp"
+        android:src="@drawable/ic_play_black"
+        app:layout_constraintBottom_toBottomOf="@id/box_time4"
+        app:layout_constraintLeft_toRightOf="@id/box_time4"
+        app:layout_constraintTop_toTopOf="@id/box_time4" />
+
+    <TextView
+        android:id="@+id/box_start_time4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="14dp"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="4sp"
+        android:text="시작 00:00"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box4"
+        app:layout_constraintTop_toBottomOf="@id/imageView_box4" />
+
+    <ImageView
+        android:id="@+id/box_divider4"
+        android:layout_width="1dp"
+        android:layout_height="18dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="13dp"
+        android:background="@color/cyongray_deep_04"
+        app:layout_constraintLeft_toRightOf="@id/box_start_time4"
+        app:layout_constraintTop_toBottomOf="@id/imageView_box4" />
+
+    <TextView
+        android:id="@+id/box_page4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="4sp"
+        android:text="교재 23~63p"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintLeft_toRightOf="@+id/box_divider4"
+        app:layout_constraintTop_toTopOf="@id/box_start_time4" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="184dp"
+        android:layout_marginLeft="225dp"
+        android:src="@drawable/img_checkstamp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@id/imageView_box4"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box4" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="466dp" />
+
+    <!--다섯 번째 상자-->
+
+    <ImageView
+        android:id="@+id/imageView_box5"
+        android:layout_width="270dp"
+        android:layout_height="235dp"
+        android:layout_marginLeft="67dp"
+        android:layout_marginTop="55dp"
+        android:background="@drawable/bg_list_card_normal"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/imageView_box6"
+        app:layout_constraintTop_toBottomOf="@+id/guideline" />
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="5dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/top_side_rectangle_blue"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box5"
+        app:layout_constraintRight_toRightOf="@id/imageView_box5"
+        app:layout_constraintTop_toTopOf="@id/imageView_box5" />
+
+    <TextView
+        android:id="@+id/box_title5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="32dp"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="21sp"
+        android:text="개념"
+        android:textColor="@color/blue_down_02"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box5"
+        app:layout_constraintTop_toTopOf="@id/imageView_box5" />
+
+    <TextView
+        android:id="@+id/box_content5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="69dp"
+        android:ellipsize="end"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="10sp"
+        android:maxLines="2"
+        android:maxWidth="195dp"
+        android:text="점, 선, 면의 이해"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box5"
+        app:layout_constraintTop_toTopOf="@id/imageView_box5" />
+
+    <TextView
+        android:id="@+id/box_time5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="35dp"
+        android:layout_marginLeft="25dp"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="7sp"
+        android:text="총시간 01:25"
+        android:textColor="@color/gray_02"
+        android:textSize="17sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="@id/imageView_box5"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box5" />
+
+    <ImageView
+        android:id="@+id/box_play_btn5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="87dp"
+        android:src="@drawable/ic_play_black"
+        app:layout_constraintBottom_toBottomOf="@id/box_time5"
+        app:layout_constraintLeft_toRightOf="@id/box_time5"
+        app:layout_constraintTop_toTopOf="@id/box_time5" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="184dp"
+        android:layout_marginLeft="225dp"
+        android:src="@drawable/img_checkstamp"
+        app:layout_constraintBottom_toBottomOf="@id/imageView_box5"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box5" />
+
+    <!--여섯 번째 상자-->
+    <ImageView
+        android:id="@+id/imageView_box6"
+        android:layout_width="270dp"
+        android:layout_height="235dp"
+        android:layout_marginTop="55dp"
+        android:background="@drawable/bg_list_card_normal"
+        app:layout_constraintLeft_toRightOf="@+id/imageView_box5"
+        app:layout_constraintRight_toLeftOf="@+id/imageView_box7"
+        app:layout_constraintTop_toBottomOf="@+id/guideline" />
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="5dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/top_side_rectangle_blue"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box6"
+        app:layout_constraintRight_toRightOf="@id/imageView_box6"
+        app:layout_constraintTop_toTopOf="@id/imageView_box6" />
+
+    <TextView
+        android:id="@+id/box_title6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="32dp"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="21sp"
+        android:text="개념"
+        android:textColor="@color/blue_down_02"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box6"
+        app:layout_constraintTop_toTopOf="@id/imageView_box6" />
+
+    <TextView
+        android:id="@+id/box_content6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="69dp"
+        android:ellipsize="end"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="10sp"
+        android:maxLines="2"
+        android:maxWidth="195dp"
+        android:text="점, 선, 면의 이해와 두줄 길이의 제목..."
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box6"
+        app:layout_constraintTop_toTopOf="@id/imageView_box6" />
+
+    <TextView
+        android:id="@+id/box_time6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="35dp"
+        android:layout_marginLeft="25dp"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="7sp"
+        android:text="총시간 01:25"
+        android:textColor="@color/gray_02"
+        android:textSize="17sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="@id/imageView_box6"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box6" />
+
+    <ImageView
+        android:id="@+id/box_play_btn6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="87dp"
+        android:src="@drawable/ic_play_black"
+        app:layout_constraintBottom_toBottomOf="@id/box_time6"
+        app:layout_constraintLeft_toRightOf="@id/box_time6"
+        app:layout_constraintTop_toTopOf="@id/box_time6" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="184dp"
+        android:layout_marginLeft="225dp"
+        android:src="@drawable/img_checkstamp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@id/imageView_box6"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box6" />
+
+    <!--일곱 번째 상자-->
+    <ImageView
+        android:id="@+id/imageView_box7"
+        android:layout_width="270dp"
+        android:layout_height="235dp"
+        android:layout_marginTop="55dp"
+        android:background="@drawable/bg_list_card_normal"
+        app:layout_constraintLeft_toRightOf="@+id/imageView_box6"
+        app:layout_constraintRight_toLeftOf="@+id/imageView_box8"
+        app:layout_constraintTop_toBottomOf="@+id/guideline" />
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="5dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/top_side_rectangle_yellow"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box7"
+        app:layout_constraintRight_toRightOf="@id/imageView_box7"
+        app:layout_constraintTop_toTopOf="@id/imageView_box7" />
+
+    <TextView
+        android:id="@+id/box_title7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="32dp"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="21sp"
+        android:text="문제"
+        android:textColor="@color/yellow_06"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@+id/imageView_box7"
+        app:layout_constraintTop_toTopOf="@id/imageView_box7"
+        tools:layout_editor_absoluteX="677dp" />
+
+    <TextView
+        android:id="@+id/box_content7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="69dp"
+        android:ellipsize="end"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="10sp"
+        android:maxLines="2"
+        android:maxWidth="195dp"
+        android:text="점, 선, 면의 이해와 두줄 길이의 제목..."
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box7"
+        app:layout_constraintTop_toTopOf="@id/imageView_box7" />
+
+    <TextView
+        android:id="@+id/box_time7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="35dp"
+        android:layout_marginLeft="25dp"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="7sp"
+        android:text="총시간 01:25"
+        android:textColor="@color/gray_02"
+        android:textSize="17sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="@id/imageView_box7"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box7" />
+
+    <ImageView
+        android:id="@+id/box_play_btn7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="87dp"
+        android:src="@drawable/ic_play_black"
+        app:layout_constraintBottom_toBottomOf="@id/box_time7"
+        app:layout_constraintLeft_toRightOf="@id/box_time7"
+        app:layout_constraintTop_toTopOf="@id/box_time7" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="184dp"
+        android:layout_marginLeft="225dp"
+        android:src="@drawable/img_checkstamp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@id/imageView_box7"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box7" />
+
+    <!--여덞 번째 상자-->
+    <ImageView
+        android:id="@+id/imageView_box8"
+        android:layout_width="270dp"
+        android:layout_height="235dp"
+        android:layout_marginRight="67dp"
+        android:layout_marginTop="55dp"
+        android:background="@drawable/bg_list_card_normal"
+        app:layout_constraintLeft_toRightOf="@+id/imageView_box7"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guideline" />
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="5dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/top_side_rectangle_yellow"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box8"
+        app:layout_constraintRight_toRightOf="@id/imageView_box8"
+        app:layout_constraintTop_toTopOf="@id/imageView_box8" />
+
+    <TextView
+        android:id="@+id/box_title8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="32dp"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="21sp"
+        android:text="문제"
+        android:textColor="@color/yellow_06"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box8"
+        app:layout_constraintTop_toTopOf="@id/imageView_box8" />
+
+    <TextView
+        android:id="@+id/box_content8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="69dp"
+        android:ellipsize="end"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="10sp"
+        android:maxLines="2"
+        android:maxWidth="195dp"
+        android:text="점, 선, 면의 이해와 두줄 길이의 제목..."
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box8"
+        app:layout_constraintTop_toTopOf="@id/imageView_box8" />
+
+    <TextView
+        android:id="@+id/box_time8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="35dp"
+        android:layout_marginLeft="25dp"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="7sp"
+        android:text="총시간 01:25"
+        android:textColor="@color/gray_02"
+        android:textSize="17sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="@id/imageView_box8"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box8" />
+
+    <ImageView
+        android:id="@+id/box_play_btn8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="87dp"
+        android:src="@drawable/ic_play_black"
+        app:layout_constraintBottom_toBottomOf="@id/box_time8"
+        app:layout_constraintLeft_toRightOf="@id/box_time8"
+        app:layout_constraintTop_toTopOf="@id/box_time8" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="184dp"
+        android:layout_marginLeft="225dp"
+        android:src="@drawable/img_checkstamp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@id/imageView_box8"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_box8" />
+</android.support.constraint.ConstraintLayout>

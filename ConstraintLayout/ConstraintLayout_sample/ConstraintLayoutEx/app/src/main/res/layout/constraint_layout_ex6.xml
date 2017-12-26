@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/goneBtn1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="상단여백 적용"
+        app:layout_constraintLeft_toLeftOf="@+id/goneBtn1"
+        app:layout_constraintTop_toBottomOf="@+id/goneBtn1"
+        app:layout_goneMarginTop="20dp" />
+
+    <Button
+        android:id="@+id/goneBtn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="좌측여백 적용"
+        app:layout_constraintLeft_toRightOf="@+id/goneBtn2"
+        app:layout_constraintTop_toTopOf="@+id/goneBtn2"
+        app:layout_goneMarginLeft="20dp" />
+
+    <Button
+        android:id="@+id/goneBtn3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="하단여백 적용"
+        app:layout_constraintBottom_toTopOf="@+id/goneBtn3"
+        app:layout_constraintRight_toRightOf="@+id/goneBtn3"
+        app:layout_goneMarginBottom="20dp" />
+
+    <Button
+        android:id="@+id/goneBtn4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="50dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:text="우측여백 적용"
+        app:layout_constraintBottom_toBottomOf="@+id/goneBtn4"
+        app:layout_constraintRight_toLeftOf="@+id/goneBtn4"
+        app:layout_goneMarginRight="20dp" />
+
+</android.support.constraint.ConstraintLayout>

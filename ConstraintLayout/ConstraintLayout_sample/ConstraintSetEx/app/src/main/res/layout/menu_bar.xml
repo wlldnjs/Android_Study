@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/menuBar"
+    android:layout_width="301dp"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+
+    <LinearLayout
+        android:id="@+id/left_line_divider"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:background="@color/black"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/title_item1"
+        layout="@layout/menu_item_main"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@+id/left_line_divider"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></include>
+
+    <include
+        android:id="@+id/title_item2"
+        layout="@layout/menu_item_main"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@+id/left_line_divider"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_item1"></include>
+
+    <include
+        android:id="@+id/title_item3"
+        layout="@layout/menu_item_main"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@+id/left_line_divider"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_item2"></include>
+    <!--<android.support.v7.widget.RecyclerView-->
+    <!--android:id="@+id/main_recyclerview"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--app:layout_constraintTop_toTopOf="parent"-->
+    <!--app:layout_constraintLeft_toLeftOf="@+id/left_line_divider"-->
+    <!--app:layout_constraintRight_toRightOf="parent"-->
+    <!--/>-->
+    <LinearLayout
+        android:id="@+id/devider1"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/blue_dull02"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="@+id/left_line_divider"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_item3" />
+
+    <LinearLayout
+        android:id="@+id/concept_plus"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:background="@color/cyongray02"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toRightOf="@+id/left_line_divider"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/devider1" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="22dp"
+        android:src="@drawable/ss_slidemenu_ic_conceptplus"
+        app:layout_constraintBottom_toBottomOf="@+id/concept_plus"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/concept_plus" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="22dp"
+        android:text="개념 플러스"
+        android:textColor="@color/black"
+        android:textSize="19sp"
+        app:layout_constraintBottom_toBottomOf="@+id/concept_plus"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/concept_plus" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="13dp"
+        android:src="@drawable/ss_slidemenu_ic_dic"
+        app:layout_constraintLeft_toLeftOf="@id/left_line_divider"
+        app:layout_constraintTop_toBottomOf="@+id/concept_plus" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="22dp"
+        android:layout_marginTop="20dp"
+        android:text="용어/인물사전"
+        android:textColor="@color/black"
+        android:textSize="19sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/concept_plus" />
+
+    <!--<android.support.v7.widget.RecyclerView-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/concept_plus"-->
+    <!--android:layout_marginTop="56dp"-->
+    <!--app:layout_constraintLeft_toLeftOf="@id/left_line_divider"-->
+    <!--app:layout_constraintRight_toRightOf="parent"-->
+    <!--/>-->
+</android.support.constraint.ConstraintLayout>
