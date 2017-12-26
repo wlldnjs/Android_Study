@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="userName"
+            type="String" />
+
+        <variable
+            name="userMemo"
+            type="String" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:background="#aad">
+
+        <TextView
+            android:id="@+id/includeTextview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="include된 레이아웃에 User객체의 데이터를 전달."
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/includeUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@{userName}"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/includeTextview" />
+
+        <TextView
+            android:id="@+id/includeUserMemo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{userMemo}"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/includeUserName" />
+    </android.support.constraint.ConstraintLayout>
+</layout>

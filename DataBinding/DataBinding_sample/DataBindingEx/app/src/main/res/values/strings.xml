@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">DataBindingEx</string>
+    <string name="buttonText">데이터 변경 버튼</string>
+</resources>

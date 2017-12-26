@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="userData"
+            type="kimjiwon.sigongeducation.databindingex.UserData" />
+
+        <variable
+            name="obUserData"
+            type="kimjiwon.sigongeducation.databindingex.ObservableUserData" />
+
+        <variable
+            name="handlers"
+            type="kimjiwon.sigongeducation.databindingex.Handlers" />
+
+        <variable
+            name="obNumData"
+            type="kimjiwon.sigongeducation.databindingex.ObservableNumberData" />
+
+        <variable
+            name="obBoolData"
+            type="kimjiwon.sigongeducation.databindingex.ObservableBooleanData" />
+
+        <variable
+            name="obStringData"
+            type="kimjiwon.sigongeducation.databindingex.ObservableStringData" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="일반 User객체"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{userData.userName}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text1" />
+
+        <TextView
+            android:id="@+id/userMemo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="@{userData.userMemo}"
+            app:layout_constraintLeft_toRightOf="@+id/userName"
+            app:layout_constraintTop_toTopOf="@+id/userName" />
+
+        <TextView
+            android:id="@+id/text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Observable User객체"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/userName" />
+
+        <TextView
+            android:id="@+id/obUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{obUserData.obUserName}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text2" />
+
+        <TextView
+            android:id="@+id/obUserMemo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="@{obUserData.obUserMemo}"
+            app:layout_constraintLeft_toRightOf="@+id/obUserName"
+            app:layout_constraintTop_toTopOf="@+id/obUserName" />
+
+        <Button
+            android:id="@+id/dataChangeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:onClick="@{(view) -> handlers.onChangedData(view, userData, obUserData)}"
+            android:text="@{@string/buttonText}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/obUserName" />
+
+        <TextView
+            android:id="@+id/text3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="버튼을 짧게 클릭하면 버튼의 숫자가 증가하고 \n길게 클릭하면 숫자가 감소합니다."
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dataChangeBtn" />
+
+        <Button
+            android:id="@+id/changeNumBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:onClick="@{() -> handlers.onCountInc(obNumData)}"
+            android:onLongClick="@{() -> handlers.onCountDec(obNumData)}"
+            android:text="@{String.valueOf(obNumData.obIntData)}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text3" />
+
+        <TextView
+            android:id="@+id/text4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="체크박스의 상태에 따라 텍스트를 표출합니다."
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/changeNumBtn" />
+
+        <CheckBox
+            android:id="@+id/checkbox1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onCheckedChanged="@{(cb, isChecked) -> handlers.onCheckboxSelect(obBoolData,isChecked)}"
+            app:layout_constraintTop_toBottomOf="@+id/text4" />
+
+        <TextView
+            android:id="@+id/checkboxText1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="클릭"
+            android:visibility="@{obBoolData.obBoolData ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_constraintBaseline_toBaselineOf="@+id/checkbox1"
+            app:layout_constraintLeft_toRightOf="@+id/checkbox1" />
+
+        <CheckBox
+            android:id="@+id/checkbox2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onCheckedChanged="@{(cb, isChecked) -> cb.isChecked() ? handlers.onCheckboxSelectIncNum(obNumData) : void}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkbox1" />
+
+        <TextView
+            android:id="@+id/checkboxText2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(obNumData.obCheckBoxIntData)}"
+            app:layout_constraintBaseline_toBaselineOf="@+id/checkbox2"
+            app:layout_constraintLeft_toRightOf="@+id/checkbox2" />
+
+        <TextView
+            android:id="@+id/text5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="텍스트를 입력 후 버튼을 클릭하면 입력한 텍스트로 텍스트가 변합니다."
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkbox2" />
+
+        <TextView
+            android:id="@+id/changeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{obStringData.obStringData}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text5" />
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:afterTextChanged="@{handlers.afterTextChanged}"
+            android:nextFocusDown="@+id/textChangeBtn"
+            android:singleLine="true"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/changeText" />
+
+        <Button
+            android:id="@+id/textChangeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> handlers.onTextChange(obStringData)}"
+            android:text="텍스트 변환"
+            app:layout_constraintLeft_toRightOf="@+id/editText"
+            app:layout_constraintTop_toTopOf="@+id/editText" />
+
+        <include
+            layout="@layout/include_item"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:userMemo="@{userData.userMemo}"
+            app:userName="@{userData.userName}" />
+    </android.support.constraint.ConstraintLayout>
+</layout>

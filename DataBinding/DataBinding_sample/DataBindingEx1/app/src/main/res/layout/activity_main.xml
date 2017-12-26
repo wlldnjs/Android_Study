@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="kimjiwon.sigongeducation.databindingex1.UserData" />
+
+        <import type="android.databinding.ObservableArrayList" />
+
+        <variable
+            name="userList"
+            type="ObservableArrayList&lt;UserData&gt;" />
+
+        <variable
+            name="handlers"
+            type="kimjiwon.sigongeducation.databindingex1.Handlers"/>
+
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/userdata_recyclerview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:item="@{userList}"
+            app:layoutManager="LinearLayoutManager"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/addListBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/userdata_recyclerview"
+            android:text="샘플데이터 추가"
+            android:onClick="@{() -> handlers.onButtonClicked(userList)}"/>
+    </android.support.constraint.ConstraintLayout>
+</layout>
+
