@@ -23,8 +23,8 @@ MVVM Design Pattern
 
 ###### 이번 자료에서는 행위 패턴에 속해있는 MVC, MVP, MVVM 패턴의 특징을 간단히 알아보고, MVVM 패턴을 적용한 DataBinding에 대해 알아본다. 
 
-</br>
 ---
+</br>
 
 >### 1. MVC, MVP, MVVM.
 
@@ -69,7 +69,8 @@ MVVM Design Pattern
 - View에서 이벤트가 발생하면 Presenter에게 전달해주고, Presenter는 해당 이벤트에 따른 Model을 조작하여 그 결과를 View에게 통보하여 View를 업데이트.
 
 ### 특징
- - MVC패턴보다 깔끔한 형태를 유지.
+ - MVC패턴보다 깔끔한 형태를 유지(주의가 필요한 것들의 분할을 잘 이루어지게 해준다).
+ - 많은 인터페이스가 생기기 때문에 작은 앱이나 프로토타입을 개발할 때 불필요할 수 있는 작업들이 생김.
  - 코드가 많아질수록 유지보수가 어려워짐(프리젠터에 여러 비지니스 로직들이 모이게 될 우려가 있음).
 
 </br>
@@ -91,10 +92,11 @@ MVVM Design Pattern
 - Command와 DataBinding을 통해 View와의 의존성을 완벽히 분리 할 수 있다.
 - Command를 통하여 리스너를 View의 이벤트와 연결 할 수 있으며, ViewModel의 속성과 특정 View의 속성을 Binding시켜 줌으로써 ViewModel속성이 변경 될 때마다 View를 업데이트 시킬 수 있다.
 - ViewModel에서 Controller의 역할도 함께 수행하기 때문에 코드가 집중 될 수 있음.
+- 초기화와 View에 의한 것이 아닌 이벤트를 제외하고는 Activity의 역할이 모호해진다.
 
 ---
 </br>
----
+
 
 #### 참고 자료:
 
@@ -107,6 +109,3 @@ MVVM Design Pattern
 > 예제 파일
 > MVVMDesignPatternEx - MVVM디자인패턴을 간단하게 확인할 수 있는 예제.
 
-
-</br>
----
