@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="kimjiwon.sigongeducation.recyclerviewex2.viewmodel.LectureViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:background="#375ee7"
+            android:gravity="center"
+            android:text="상세강좌"
+            android:textColor="#ffffff"
+            android:textSize="26sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/background_image"
+            android:layout_width="897dp"
+            android:layout_height="0dp"
+            android:background="#d9ecf2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_bar" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/horizontal_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="78dp" />
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="62dp"
+            android:text="강수"
+            android:textColor="#669eb0"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="@+id/background_image"
+            app:layout_constraintTop_toTopOf="@+id/horizontal_guideline" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="147dp"
+            android:text="강의명"
+            android:textColor="#669eb0"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="@+id/background_image"
+            app:layout_constraintTop_toTopOf="@+id/horizontal_guideline" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="183dp"
+            android:text="강의시간"
+            android:textColor="#669eb0"
+            android:textSize="16sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/horizontal_guideline" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="61dp"
+            android:text="페이지 수"
+            android:textColor="#669eb0"
+            android:textSize="16sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/horizontal_guideline" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/lecture_recyclerView"
+            item="@{viewModel.lectureList}"
+            android:layout_width="897dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="18dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+
+            app:layoutManager="LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher_round"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            onTouchBtn="@{viewModel.btnModel}"
+            />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
