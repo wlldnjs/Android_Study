@@ -199,6 +199,142 @@ layout_weight는 단순히 비율을 나누어 공간을 차지하는 것이 아
 - 잠자기 모드 : 기기를 오랫동안 사용하지 않을 때 앱의 백그라운드에서의 CPU활동 및 네트워크 작업을 지연시켜 배터리 소모량을 줄인다.
 - 앱 대기모드 : 최근 사용자와 상호작용이 없는 앱의 백그라운드 네트워크 액티비티를 지연시킨다.
 
+#### 잠자기 모드
+사용자가 플러그를 뽑고 화면이 꺼진 채로 기기를 일정 기간 동안 정지 상태로 두면 기기는 잠자기 모드작동. 
+잠자기 모드에서 시스템은 앱이 네트워크 서비스와 CPU 사용량이 많은 서비스에 액세스하는 것을 제한하여 배터리를 절약.
+또한 앱이 네트워크에 액세스하지 못하도록 하고 작업, 동기화 및 표준 알람을 지연.
+
+시스템은 앱에서 지연된 액티비티를 완료할 수 있도록 주기적으로 잠깐 동안 잠자기 모드를 종료. 
+유지관리 기간 동안 시스템은 보류 중인 동기화, 작업 및 알람을 모두 실행하고 앱이 네트워크에 액세스할 수 있도록 허용.
+
+유지관리 기간이 끝나면 시스템이 다시 잠자기 모드로 들어가면서 네트워크 액세스가 정지되고 작업, 동기화 및 알람이 지연됩니다. 시간이 지날수록 시스템은 유지관리 기간의 횟수를 줄입니다. 그 이유는 기기가 충전기에 연결되어 있지 않은 상태에서 비활성 기간이 길어지는 경우에 배터리 소모량을 낮출 수 있기 때문입니다.
+
+사용자가 기기를 움직이거나 화면을 켜거나 충전기를 연결하여 기기를 활성화하면 시스템은 잠자기 모드를 종료하고 모든 앱은 정상적인 액티비티로 돌아갑니다.
+
+#### 잠자기 모드 사용 시 제한사항
+- 네트워크 액세스 정지
+- 시스템에서의 wake locks, wifi 스캔, 동기화 어탭터, JobScheduler 무시
+- 표준 AlarmManager 알람(setExact() 및 setWindow() 포함)은 다음 유지관리 기간으로 연기
+
+
+
+### 배터리 상태 모니터링 
+업데이트가 배터리 수명에 미치는 영향을 줄이기 위해 백그라운드 업데이트 빈도를 변경할 때는 현재 배터리 수준과 충전 상태부터 확인하는 것이 좋다.
+
+애플리케이션 업데이트 수행으로 배터리 수명이 영향을 받는 정도는 기기의 배터리 수준과 충전 상태에 따라 달라진다.
+기기가 AC 전원에서 충전될 때 업데이트 수행이 미치는 영향은 무시할 만한 수준이므로, 대부분 기기가 콘센트에 연결되어 있으면 새로고침 비율을 최대화할 수 있다. 
+반대로 기기가 방전되고 있으면 업데이트 비율을 낮추는 것이 배터리 수명 연장에 좋다.
+
+마찬가지로 배터리 충전 수준을 검사하고, 배터리 충전량이 거의 소모되었을 때 업데이트 빈도를 낮추거나 심지어 중단할 수도 있다.
+
+#### 현재 충전상태 확인
+현재 충전 상태를 확인하는 작업부터 시작한다. BatteryManager는 충전 상태를 포함하는 접착식 Intent에서 모든 배터리와 충전 세부정보를 브로드캐스트한다.
+
+접착식 인텐트이므로 BroadcastReceiver를 등록할 필요가 없다. 
+다음 스니펫에서와 같이 registerReceiver를 호출하여 null을 수신기로 전달하면 현재 배터리 상태 인텐트가 반환된다.
+여기서 실제 BroadcastReceiver 객체를 전달할 수도 있지만 나중 세션에서 업데이트를 처리할 것이므로 필요하지 않다.
+
+``` java
+IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+Intent batteryStatus = context.registerReceiver(null, ifilter);
+```
+
+또한. USB나 일반 충전기로 충전할 때 어떤것으로 충전할지 여부를 확인할 수 있다.
+
+``` java
+// Are we charging / charged?
+int status = batteryStatus.getIntExtra(BatteryManager.EXTRA_STATUS, -1);
+boolean isCharging = status == BatteryManager.BATTERY_STATUS_CHARGING ||
+                     status == BatteryManager.BATTERY_STATUS_FULL;
+
+// How are we charging?
+int chargePlug = batteryStatus.getIntExtra(BatteryManager.EXTRA_PLUGGED, -1);
+boolean usbCharge = chargePlug == BatteryManager.BATTERY_PLUGGED_USB;
+boolean acCharge = chargePlug == BatteryManager.BATTERY_PLUGGED_AC;
+```
+
+### 도킹 상태와 유형 모니터링
+Android 기기는 여러 가지 종류의 도크에 도킹할 수 있습니다. 여기에는 차량/홈 도크와 디지털/아날로그 도크가 포함된다. 
+많은 도크가 도킹된 기기에 전원을 제공하므로 통상 도킹 상태는 충전 상태와 밀접하게 연결되어 있다.
+
+휴대폰의 도킹 상태가 업데이트 비율에 미치는 영향은 앱에 따라 다릅니다. 예컨대 데스크톱 도크에 있을 때는 스포츠 센터 앱의 업데이트 빈도를 높이고 기기가 차량에 도킹되어 있을 때는 업데이트를 완전히 비활성화할 수 있다. 
+반대로 백그라운드 서비스가 교통 상황을 업데이트 중이라면 차량에 도킹되어 있을 때 업데이트를 최대화할 수도 있다.
+
+도킹 상태는 접착식 Intent로 브로드캐스팅되어서 기기가 도킹되어 있는지, 기기가 도킹되어 있다면 어떤 유형의 도크인지 쿼리할 수 있다.
+
+#### 도킹 연결상태 확인
+도킹 상태 세부정보는 ACTION_DOCK_EVENT 작업의 접착식 브로드캐스트에 엑스트라로 포함됩니다. 접착식이므로 BroadcastReceiver를 등록하지 않아도 됩니다. 다음 스니펫에서 보여주듯이 registerReceiver()를 호출하여 브로드캐스트 수신기로 null을 전달하면 된다.
+
+``` java
+IntentFilter ifilter = new IntentFilter(Intent.ACTION_DOCK_EVENT);
+Intent dockStatus = context.registerReceiver(null, ifilter);
+```
+
+EXTRA_DOCK_STATE 엑스트라에서 현재 도킹 상태를 추출할 수 있다.
+
+``` java
+int dockState = battery.getIntExtra(EXTRA_DOCK_STATE, -1);
+boolean isDocked = dockState != Intent.EXTRA_DOCK_STATE_UNDOCKED;
+
+```
+
+기기가 도킹되어 있을 때는 4가지 상태로 나눠진다.
+- 자동차
+- 데스크
+- 저사양(아날로그) 데스크(api 11이상)
+- 고사양(디지털) 데스크
+
+상태를 확인하기 위해서는 아래와 같은 코드를 사용한다.
+
+``` java
+boolean isCar = dockState == EXTRA_DOCK_STATE_CAR;
+boolean isDesk = dockState == EXTRA_DOCK_STATE_DESK ||
+                 dockState == EXTRA_DOCK_STATE_LE_DESK ||
+                 dockState == EXTRA_DOCK_STATE_HE_DESK;
+```
+
+#### 도크 상태 변화 모니터링
+기기를 도킹하거나 도킹을 해제할 때마다 ACTION_DOCK_EVENT 작업이 브로드캐스트됨.
+기기의 도크 상태 변화를 모니터링하려면 아래 스니펫과 같이 애플리케이션 매니페스트에서 브로드캐스트 수신기를 등록.
+
+``` xml
+<action android:name="android.intent.action.ACTION_DOCK_EVENT"/>
+```
+
+### 연결상태 확인 및 모니터링
+
+반복적인 알람과 백그라운드 서비스의 가장 흔한 사용 방법은 인터넷 리소스, 캐시 데이터에서 애플리케이션 데이터의 정기 업데이트를 예약하거나 장기 실행 다운로드를 실행하는 것이다
+
+#### 인터넷 연결상태 확인
+
+```java
+ConnectivityManager cm =
+        (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+boolean isConnected = activeNetwork != null &&
+                      activeNetwork.isConnectedOrConnecting();
+```
+
+#### 인터넷 연결 유형 확인
+현재 이용 가능한 인터넷 연결 유형을 확인할 수 있다.
+기기 연결은 모바일 데이터, WiMAX, Wi-Fi 및 이더넷 연결로 제공될 수 있다. 
+아래와 같이 활성 네트워크 유형을 쿼리하면 이용 가능한 대역폭에 기초하여 새로고침 비율을 변경할 수 있다.
+
+```java
+boolean isWiFi = activeNetwork.getType() == ConnectivityManager.TYPE_WIFI;
+```
+
+업데이트를 비활성화한 뒤에는 연결에 변화가 있는지 수신 대기하고 있다가 인터넷 연결이 설정되면 업데이트를 재개해야 한다.
+
+
+### 연결 변경 모니터링
+ConnectivityManager는 연결 세부정보가 변경되면 CONNECTIVITY_ACTION("android.net.conn.CONNECTIVITY_CHANGE") 작업을 브로드캐스트. 
+매니페스트에서 브로드캐스트 수신기를 등록하고 이러한 변화를 수신 대기하고 있다가 그에 따라 백그라운드 업데이트를 재개(또는 정지)할 수 있다.
+
+``` java
+<action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+```
 
 </br>
 
