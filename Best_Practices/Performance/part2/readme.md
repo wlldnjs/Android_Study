@@ -63,7 +63,7 @@ class PhotoDecodeRunnable implements Runnable {
 }
 ```
 
-> #### 여러 스레드에 대한 관리자 생성
+#### 여러 스레드에 대한 관리자 생성
 기본적으로 한번에 하나의 작업만 할때는 IntentService를 사용하는것이 좋지만, 
 동시에 여러 작업을 실행할때는 ThreadPoolExecutor를 사용하여 스레드풀의 대기열에 작업을 추가하여 사용하는것이 좋습니다.
 스레드풀에서의 작업은 병렬로 실행될 수 있으나, synchronized를 사용하여 하나의 작업공간에 두개의 스레드가 접근할 수 없게 막을수 있습니다.
@@ -479,7 +479,7 @@ public class PhotoManager {
 }
 ```
 
-——
+----
 
 > ### 앱의 응답성 유지
 
