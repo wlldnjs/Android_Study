@@ -1,7 +1,7 @@
 Best Practices for Performance
 ===
 
-###### created by Kimjiwon on 2018.01.16
+###### 원문번역 by Kimjiwon on 2018.01.16
 ----
 
 >### 성능 향상을 위한 방법들.
@@ -335,7 +335,7 @@ ConnectivityManager는 연결 세부정보가 변경되면 CONNECTIVITY_ACTION("
 </br>
 
 ---
-#### 참고 자료:
+#### 원문 출처:
 
  * [Best Practices for Performance](https://developer.android.com/training/best-performance.html) for Android Developers
 
