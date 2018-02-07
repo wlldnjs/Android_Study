@@ -4,17 +4,17 @@
 
 #### 스레드에서 실행할 코드 지정
 
-이 과정에서는 runnable.run()방식으로 코드를 별도의 스레드에서 실행하는 실행 가능한 클래스를 구현하는 방법을 보여 줍니다.</br>
+이 과정에서는 runnable.run()방식으로 코드를 별도의 스레드에서 클래스를 구현하는 방법을 보여 줍니다.</br>
 또한 다른 개체에 실행 파일을 전달하여 스레드에 연결하고 실행할 수도 있습니다.</br>
 특정 작업을 수행하는 하나 이상의 실행 가능한 개체를 Task라고도 합니다.</br>
 스레드 및 Runable은 기본 클래스이며, 단독으로 사용이 제한됩니다.</br>
-대신에, 이들은 HandlerThread, Asynktask및 IntentService와 같은 강력한 안드로이드 클래스의 기초가 됩니다.</br>
+대신에, 이들은 HandlerThread, Asynktask및 IntentService와 같은 안드로이드 클래스의 기초가 됩니다.</br>
 또한 스레드와 runnable은 ThreadPoolExecutor의 기초가 됩니다.</br>
-이 클래스는 자동으로 스레드 및 태스크 대기 열을 관리하며 여러 스레드를 병렬로 실행할 수도 있습니다. </br>
+ThreadPoolExecutor는 자동으로 스레드 및 태스크 대기 열을 관리하며 여러 스레드를 병렬로 실행할 수도 있습니다. </br>
 
 #### 실행 가능한 클래스 정의
 
-Runable 코드의 간단한 예시.
+Runnable 코드의 간단한 예시.
 
 ``` java
 public class PhotoDecodeRunnable implements Runnable {
@@ -32,13 +32,12 @@ public class PhotoDecodeRunnable implements Runnable {
 
 #### run() 메서드 Implement
 
-아래의 클래스에서 Runnable.run() 메서드를 사용하는 코드를 볼수 있습니다.</br>
 알아두어야 할 주의사항은 Runable은 UI스레드에서는 작동하지 않으며, 또한 View를 직접 변경 할 수도 없습니다.</br>
 
-run()메서드를 시작하기 위해서는, 백그라운드 우선순위를 설정하기 위해 THREAD_PRIORITY_BACKGROUND와 함께 Process.setThreadPriority()메서드를 호출해야 합니다.</br>
-이 접근을 통해 Runable 스레드와 UI 스레드의 자원 경쟁을 줄일 수 있다.</br>
+run()메서드를 시작하기 전에, 백그라운드 우선순위를 설정하기 위해 THREAD_PRIORITY_BACKGROUND와 함께 Process.setThreadPriority()메서드를 호출해야 합니다.</br>
+이 접근을 통해 Runable 스레드와 UI 스레드의 자원 경쟁을 줄일 수 있습니다.</br>
 
-또한 최근 참조한 Runable 스레드를 사용하기 위해서 Thread.currentThread()메서드를 사용할 수 있다.
+또한 현재 실행중인 Runable 스레드에 접근하기 위해서 Thread.currentThread()메서드를 사용할 수 있습니다.
 
 
 ``` java
@@ -68,6 +67,7 @@ class PhotoDecodeRunnable implements Runnable {
 
 기본적으로 한번에 하나의 작업만 할때는 IntentService를 사용하는것이 좋지만, 
 동시에 여러 작업을 실행할때는 ThreadPoolExecutor를 사용하여 스레드풀의 대기열에 작업을 추가하여 사용하는것이 좋습니다.</br>
+- IntentService : 스레드 종류중 하나로써 비동기로 실행되는 스레드. 여러번 실행되면 queue방식으로 처리.
 스레드풀에서의 작업은 병렬로 실행될 수 있으나, synchronized를 사용하여 하나의 작업공간에 두개의 스레드가 접근할 수 없게 막을수 있습니다.</br>
 
 #### 스레드 풀 클래스 정의
@@ -123,7 +123,7 @@ public class PhotoManager {
 ```
 
 핸들러 인스턴스의 생성자에서 UI스레드와 연결
-- 핸들러 인스턴스는 앱에서 UI객체의 메서드를 안전하게 호출할 수 있도록 도와줍니다.
+- 핸들러 인스턴스는 handlerMessage() 메서드를 통해 앱에서 UI객체의 메서드를 안전하게 호출할 수 있도록 도와줍니다.
 
 
 ``` java
@@ -170,33 +170,15 @@ public class PhotoManager {
 활성 시간과 시간단위
 - 스레드가 종료되기 전 대기 상대로 유지되는 기간. 이 기간은 TimeUnit단위로 정의됩니다.
 
-작업 대기열
+Task Queue
 - ThreadPoolExecutor가 runable 객체를 가져오는 수신 대기 열입니다. 
-- 스레드에서 Task를 시작하면 ThreadPoolExecutor가 선입 선출 대기 열에서 runnable 개체를 가져와 스레드에 연결합니다. 
-- BlockingQueue인터페이스를 구현하는 queue 클래스를 사용하여 스레드 풀을 생성할 때 이 대기 열 개체를 implements합니다. 
-- 애플리케이션의 요구 사항에 맞게 사용 가능한 queue implementations 에서 선택할 수 있습니다.
-
-``` java
-public class PhotoManager {
-    ...
-    private PhotoManager() {
-        ...
-        // A queue of Runnables
-        private final BlockingQueue<Runnable> mDecodeWorkQueue;
-        ...
-        // Instantiates the queue of Runnables as a LinkedBlockingQueue
-        mDecodeWorkQueue = new LinkedBlockingQueue<Runnable>();
-        ...
-    }
-    ...
-}
-```
-
+- 스레드에서 Task를 시작하면 ThreadPoolExecutor가 대기 열에서 선입선출 방식으로 runnable 객체를 가져와 스레드에 연결합니다. 
+- BlockingQueue 인터페이스를 구현하는 queue 클래스를 사용하여 스레드 풀을 생성할 때 이 Task Queue 객체를 implements할 수 있습니다. 
 
 #### 스레드풀 생성
 
 스레드풀을 생성하기 위해서 ThreadPoolExecutor()를 호출하여 스레드풀 매니저를 인스턴스화 합니다.</br>
-이것은 제한된 스레드 그룹을 생성하고 관리하지만 초기, 최대 풀 크기는 같습니다.</br>
+이것은 제한된 크기의 스레드 그룹을 생성하고 관리하지만 코어의 수에 따라 초기, 최대 풀 크기가 지정됩니다.</br>
 
 ```java
 private PhotoManager() {
@@ -237,23 +219,7 @@ public class PhotoManager {
 }
 ```
 
-작업을 종료하려면 작업 스레드에 인터럽트를 걸어야 합니다.
-
-``` java
-class PhotoDecodeRunnable implements Runnable {
-    // Defines the code to run for this task
-    public void run() {
-        /*
-         * Stores the current Thread in the
-         * object that contains PhotoDecodeRunnable
-         */
-        mPhotoTask.setImageDecodeThread(Thread.currentThread());
-        ...
-    }
-    ...
-}
-```
-
+작업을 종료하려면 작업 스레드에 인터럽트를 걸어야 합니다.</br>
 스레드에 인터럽트 하기 위해서는 Thread.interrupt() 메서드를 호출하면 됩니다.</br>
 스레드 객체는 시스템에 의해 컨트롤 되기 때문에 외부 앱에서 접근 가능합니다.</br>
 그렇기 때문에 스레드에 접근하기 전에 synchronized 블록을 통해 접근을 제어하는것이 좋습니다.</br>
@@ -309,17 +275,17 @@ BitmapFactory.decodeByteArray(
 ```
 
 #### UI스레드와 통신
-
-모든 프로그램에는 UI객체에 대한 작업을 하는 UI 스레드가 있습니다.</br>
+안드로이드의 애플리케이션을 실행하면 시스템은 메인 액티비티를 메모리로 올려 프로세스로 만들며, 이 때 메인 스레드가 자동으로 생성됩니다. </br>
+메인 스레드는 안드로이드의 주요 컴퍼넌트를 실행하는 곳이자 UI를 그리거나 갱신하는 일을 담당할 수 있는 유일한 스레드이므로 UI 스레드라고도 불립니다.</br>
 다른 스레드에서는 UI작업에 접근 할 수 없기 때문에 Handler를 이용하여 UI스레드로 데이터를 전달하여 처리하여야 합니다.</br>
 
 #### UI스레드에서 핸들러 정의
 
 핸들러는 스레드를 관리하는 안드로이드 시스템의 프레임워크중 하나입니다.</br>
-앤들러 객체는 메시지를 수신하고, 메세지를 처리합니다.</br>
+핸들러 객체는 메시지를 수신하고, 메세지를 처리합니다.</br>
 핸들러를 UI 스레드에 연결하면 UI스레드에서 메세지가 처리됩니다.</br>
 
-예를들어 핸들러 객체를 생성자에서 스레드풀에 생성하고 전역변수에 저장하고, Handler(Looper) 생성자로 인스턴스화 하여 함께 UI스레드에 접근합니다.</br>
+핸들러 객체를 생성할 때 스레드풀에 생성하여 전역변수에 저장하고, Handler(Looper) 생성자로 인스턴스화 하여 함께 UI스레드에 접근합니다.</br>
 핸들러를 Looper인스턴스를 기반으로 생성하면, 핸들러는 Looper와 같은 스레드에서 실행됩니다.</br>
 
 ``` java
@@ -330,8 +296,7 @@ private PhotoManager() {
     ...
 ```
 
-핸들러 내부에서 handleMessage()가 오버라이드 됩니다.
-안드로이드 시스템은 스레드에 메세지를 전달받았을때 모든 핸들러 메서드에 같은 메세지를 보냅니다.
+핸들러를 생성하면 handleMessage() 메서드가 오버라이드 됩니다.
 
 ``` java
         /*
@@ -391,7 +356,7 @@ class PhotoDecodeRunnable implements Runnable {
 ...
 ```
 
-객체로 상태 전달
+객체로 상태 전달하기 위해 handleState 객체에 데이터 저장
 
 ``` java
 public class PhotoTask {
@@ -614,6 +579,7 @@ JNI는 Java Native Interface로 안드로이드 프레임워크에서 자바와 
 
 #### C 프로그램에서 자바 클래스 실행
 C/C++에서 Java의 클래스를 이용하기 위해서는 Reflection 기술을 이용해야 합니다.
+- Reflection? 구체적인 클래스 타입을 알지 못해도, 그 클래스의 메소드, 타입, 변수들을 접근할 수 있게 도와주는 자바 API
 
 1. 자바 가상 머신에 전달할 옵션값을 생성
 2. 자바 가상 머신 생성
