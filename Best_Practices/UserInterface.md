@@ -679,3 +679,15 @@ Snackbar mySnackbar = Snackbar.make(findViewById(R.id.myCoordinatorLayout),
 mySnackbar.setAction(R.string.undo_string, new MyUndoListener());
 mySnackbar.show();
 ```
+
+</br>
+
+
+---
+#### 원문 출처:
+
+ * [Best Practices for User Interface](https://developer.android.com/training/best-ui.html) for Android Developers
+
+</br>
+
+---
