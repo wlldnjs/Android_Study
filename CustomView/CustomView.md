@@ -1,12 +1,12 @@
 ### Custom View
 
-안드로이드는 기본 레이아웃 클래스인 View와 ViewGroup에 기반하여 UI를 구축할 수 있는 정교하고 강력한 컴포넌트 모델을 제공합니다.
+안드로이드는 기본 레이아웃 클래스인 View와 ViewGroup에 기반하여 UI를 구축할 수 있는 정교하고 강력한 컴포넌트 모델을 제공합니다.</br>
 먼저 플랫폼은 Widgets, Layout이라고 불리는 기존의 View와 ViewGroup의 다양한 서브클래스를 포함하고 있습니다.
 
-일부 사용 가능한 위젯의 종류로써는 Button, TextView, EditText, ListView, CheckBox, RadioButton, Gallery, Spinner가 있으며, 더 특별한 목적의 위젯에는 AutoCompleteTextView, ImageSwitcher, TextSwitcher이 있습니다.
+일부 사용 가능한 위젯의 종류로써는 Button, TextView, EditText, ListView, CheckBox, RadioButton, Gallery, Spinner가 있으며, 더 특별한 목적의 위젯에는 AutoCompleteTextView, ImageSwitcher, TextSwitcher이 있습니다.</br>
 사용 가능한 레이아웃은 LinearLayout, FrameLayout, RelativeLayout 등이 있습니다.
 
-만약 사전에 생성된 위젯 또는 레이아웃에 사용자가 필요한 기능을 추가하고 싶다면, View의 서브클래스를 생성하여 메서드를 재정의 할 수 있습니다. 
+만약 사전에 생성된 위젯 또는 레이아웃에 사용자가 필요한 기능을 추가하고 싶다면, View의 서브클래스를 생성하여 메서드를 재정의 할 수 있습니다. </br>
 자신만의 View 서브클래스를 만드는 것으로서 화면 요소의 기능 또는 보이는 것들의 정밀한 제어가 가능합니다.
 
 #### 기본적인 접근법
@@ -29,15 +29,14 @@
 
 #### onDraw()와 onMeasure() 메서드의 확장
 
-onDraw() 메서드는 사용자가 원하는것을 만들 수 있는 캔버스를 제공해줍니다.
+onDraw() 메서드는 사용자가 원하는것을 만들 수 있는 캔버스를 제공해줍니다.</br>
 캔버스에 그려질 수 있는 것은 2D그래픽, 기본 또는 커스텀 컴포넌트, 스타일이 지정된 텍스트 등등 이 있습니다.
 
     * 3D 그래픽은 지원하지 않으며, 3D그래픽을 그리고 싶다면 View 대신 SurfaceView를 상속받아야 하고 별도의 Thread에서 그려져야 합니다.
 
-onMeasure() 메서드는 컴포넌트와 컨테이너 사이의 계약관계를 표현하는 중요한 부분이며, 포함된 부분들에 대한 계측이 효율적이고 정확하게 전달되도록 재정의 되어야 합니다.
-만약 onMeasuer() 메서드로 전달되어져야 할 사항들과 이미 계산되어진 width와 height를 가지고 있다면, setMeasuredDimension() 메서드를 호출하여야 합니다.
-재정의된 onMeasure() 메서드에서 이러한 메서드를 호출받지 못한다면 Measurement Time에서 예외가 발생하게 됩니다.
-
+onMeasure() 메서드는 컴포넌트와 컨테이너 사이의 계약관계를 표현하는 중요한 부분이며, 포함된 부분들에 대한 계측이 효율적이고 정확하게 전달되도록 재정의 되어야 합니다.</br>
+만약 onMeasuer() 메서드로 전달되어져야 할 사항들과 이미 계산되어진 width와 height를 가지고 있다면, setMeasuredDimension() 메서드를 호출하여야 합니다.</br>
+재정의된 onMeasure() 메서드에서 이러한 메서드를 호출받지 못한다면 Measurement Time에서 예외가 발생하게 됩니다.</br>
 High Level에서 보았을 때 onMeasure() 메서드는 다음과 같은 일을 하는것으로 보여집니다.
 
 1. 재정의된 onMeasure() 메서드는 width와 Height 수치와 함께 호출합니다(View.onMeasure(int, int)).
@@ -47,8 +46,8 @@ High Level에서 보았을 때 onMeasure() 메서드는 다음과 같은 일을 
 
 #### Compound Controls
 
-기존의 Constrols(View)의 그룹들을 하나로 합치려면 Compound Component를 생성하는 것이 적합합니다.
-간단히 말해 여러 View들을 하나의 논리적인 그룹으로 합치는 것 입니다.
+기존의 Constrols(View)의 그룹들을 하나로 합치려면 Compound Component를 생성하는 것이 적합합니다.</br>
+간단히 말해 여러 View들을 하나의 논리적인 그룹으로 합치는 것 입니다.</br>
 예를들어 한줄의 EditText와 ListView로 이루어진 콤보 박스가 있습니다.
 
 Compound Component 만들기
@@ -70,7 +69,7 @@ Compound Component 만들기
 
 #### 뷰 타입 변경
 
-사용자가 원하는 동작과 매우 유사하게 동작하는 컴포넌트가 이미 있다면, 해당 컴포넌트를 간단히 상속받아 바꾸고 싶은 동작을 재정의할 수 있습니다.
+사용자가 원하는 동작과 매우 유사하게 동작하는 컴포넌트가 이미 있다면, 해당 컴포넌트를 간단히 상속받아 바꾸고 싶은 동작을 재정의할 수 있습니다.</br>
 새로운 커스텀 컴포넌트를 통해 추가 하고싶은 많은 기능들을 넣을 수 있지만, 기존의 특정 View 계층에 좀 더 특화되어있는 클래스에서 시작한다면 사용자가 원하는 것을 행하는 많은 메서드들을 자유롭게 얻을 수 있습니다.
 
 1. The Definition
@@ -86,12 +85,12 @@ public static class MyEditText extends EditText
 
 2. Class Initialization
 
-XML 레이아웃 파일로부터 인플레이트 될 때 생성자의 파라미터들과 함께 생성됩니다.
+XML 레이아웃 파일로부터 인플레이트 될 때 생성자의 파라미터들과 함께 생성됩니다.</br>
 생성자에서는 그것들을 사용함과 동시에 부모 클래스의 생성자로 파라미터들을 넘겨주어야 합니다.
 
 3. Overridden Methods
 
-새로 정의된 클래스에서 onDraw()를 재정의하여 다른 다른 동작을 하게 된다면, 메서드가 끝나기 전에 부모클래스의 onDraw()가 호출됩니다. 
+새로 정의된 클래스에서 onDraw()를 재정의하여 다른 다른 동작을 하게 된다면, 메서드가 끝나기 전에 부모클래스의 onDraw()가 호출됩니다.</br>
 부모클래스의 onDraw()는 자식 클래스에서의 동작이 끝난 후 동작하게 됩니다.
 
 4. Use the Custom Component
@@ -108,15 +107,15 @@ XML 레이아웃 파일로부터 인플레이트 될 때 생성자의 파라미�
   android:fadingEdge="vertical" />
 ```
 
-위와같은 xml파일이 있을 때, 사용자 컴포넌트는 일반적인 뷰와 함께 생성되고, Full Package를 사용하여 정의됩니다.
-또한 이너클래스는 $기호를 통해 참조할 수 있습니다.
+위와같은 xml파일이 있을 때, 사용자 컴포넌트는 일반적인 뷰와 함께 생성되고, Full Package를 사용하여 정의됩니다.</br>
+또한 이너클래스는 $기호를 통해 참조할 수 있습니다.</br>
 만약 사용자 뷰 컴포넌트가 이너클래스로 정의되어 있지 않다면, XML Element Name으로 컴포넌트를 정의하여 사용할 수 있습니다.
 
 ---
 
 ### 커스텀 뷰 클래스 생성
 
-커스텀 뷰는 사용하기 쉬운 인터페이스로 특정 기능 셋을 캡슐화하고, CPU및 메모리르 효율적으로 사용해야 합니다.
+커스텀 뷰는 사용하기 쉬운 인터페이스로 특정 기능 셋을 캡슐화하고, CPU및 메모리르 효율적으로 사용해야 합니다.</br>
 또한 다음과 같은 사항을 준수해야 합니다.
 
 - 안드로이드 표준 준수
@@ -128,9 +127,8 @@ XML 레이아웃 파일로부터 인플레이트 될 때 생성자의 파라미�
 
 #### Subclass a View
 
-안드로이드 프레임워크에 정의된 모든 뷰 클래스들은 View를 상속받습니다.
-커스텀 뷰 또한 뷰를 직접 상속받거나 뷰의 서브클래스들을 상속받아 구현할 수 있습니다.
-
+안드로이드 프레임워크에 정의된 모든 뷰 클래스들은 View를 상속받습니다.</br>
+커스텀 뷰 또한 뷰를 직접 상속받거나 뷰의 서브클래스들을 상속받아 구현할 수 있습니다.</br>
 안드로이드 스튜디오와 뷰가 상호작용 하기 위해서는 최소한 Context와 AttributeSet 객체를 파라미터로 가지는 생성자를 제공해야 하며, 이를 통해 레이아웃 편집기가 뷰의 인스턴스를 만들고 편집할 수 있게 도와줍니다.
 
 ``` java
@@ -141,12 +139,12 @@ class PieChart extends View {
 }
 ```
 
-    * View와 ViewGroup의 차이 : 안드로이드 레퍼런스에 따르면 뷰그룹은 다른 뷰들을 포함할 수 있는 특수한 뷰로써, 레이아웃 및 뷰 컨테이너의 기본 클래스입니다(뷰를 그룹으로 묶어서 관리하기 위해 주로 사용).
+    * View와 ViewGroup의 차이 : 안드로이드 레퍼런스에 따르면 뷰그룹은 다른 뷰들을 포함할 수 있는 특수한 뷰로써,</br> 레이아웃 및 뷰 컨테이너의 기본 클래스입니다(뷰를 그룹으로 묶어서 관리하기 위해 주로 사용).
 
 #### Define Custom Attributes
 
-뷰에 사용자 인터페이스를 추가하기 위해서는 이를 XML요소에 지정하고 속성을 통해 모양과 동작을 제어해야 합니다.
-잘 작성된 커스텀 뷰는 XML을 통해 값을 추가하고 스타일을 지정할 수 있습니다.
+뷰에 사용자 인터페이스를 추가하기 위해서는 이를 XML요소에 지정하고 속성을 통해 모양과 동작을 제어해야 합니다.</br>
+잘 작성된 커스텀 뷰는 XML을 통해 값을 추가하고 스타일을 지정할 수 있습니다.</br>
 커스텀 뷰에서 이 동작들을 사용하기 위해서는 아래와 같은 절차를 따릅니다.
 
 - <declare-styleable> 리소스 요소에 뷰의 커스텀 속성을 정의
@@ -154,7 +152,7 @@ class PieChart extends View {
 - 런타임 시 속성값 검색
 - 검색된 속성값을 뷰에 적용
 
-커스텀 속성을 정의하기 위해서는 <declare-styleable> 리소스를 프로젝트에 추가해야 합니다.
+커스텀 속성을 정의하기 위해서는 <declare-styleable> 리소스를 프로젝트에 추가해야 합니다.</br>
 이 리소스는 res/values/attrs.xml 파일에 저장하는 것이 일반적입니다.
 
 ``` xml
@@ -169,14 +167,11 @@ class PieChart extends View {
 </resources>
 ```
 
-위의 코드에는 PieChart라는 이름의 declare-styleable에 showText와 labelPosition 이라는 두개의 커스텀 속성이 정의되어 있습니다.
-styleable entity의 이름은 일반적으로 custom view를 정의하는 클래스 이름과 같습니다.
-
-커스텀 속성을 정의한 후에는 기존 레이아웃 XML파일에서 사용하는것처럼 속성을 사용할 수 있습니다.
-기존과 다른점은 커스텀 속성은 다른 namespace를 갖는 점 입니다.
-    * 기존의 http://schemas.android.com/apk/res/android 가 아닌 새로운 네임스페이스로
-http://schemas.android.com/apk/res/[your package name]를 정의해서 사용해야 합니다.
-또는 http://schemas.android.com/apk/res/res-auto를 사용해도 됩니다.
+위의 코드에는 PieChart라는 이름의 declare-styleable에 showText와 labelPosition 이라는 두개의 커스텀 속성이 정의되어 있습니다.</br>
+styleable entity의 이름은 일반적으로 custom view를 정의하는 클래스 이름과 같습니다.</br>
+커스텀 속성을 정의한 후에는 기존 레이아웃 XML파일에서 사용하는것처럼 속성을 사용할 수 있습니다.</br>
+기존과 다른점은 커스텀 속성은 다른 namespace를 갖는 점 입니다.</br>
+    * 기존의 http://schemas.android.com/apk/res/android 가 아닌 새로운 네임스페이스로 </br>http://schemas.android.com/apk/res/[your package name]를 정의해서 사용해야 합니다. </br>또는 http://schemas.android.com/apk/res/res-auto를 사용해도 됩니다.
 
 ``` xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -190,13 +185,13 @@ http://schemas.android.com/apk/res/[your package name]를 정의해서 사용해
 
 #### Apply Custom Attributes
 
-뷰가 XML 레이아웃으로 부터 생성 되었을 때, XML 태그 내의 모든 속성들은 resource bundle로 부터 읽혀져 뷰 생성자의 AttributeSet으로 전달됩니다.
+뷰가 XML 레이아웃으로 부터 생성 되었을 때, XML 태그 내의 모든 속성들은 resource bundle로 부터 읽혀져 뷰 생성자의 AttributeSet으로 전달됩니다.</br>
 AttributeSet에서 직접 값을 읽을 수도 있지만, 아래와 같은 문제가 있습니다.
 
 - 속성 값 내의 리소스 참조가 해결되지 않음
 - 스타일이 적용되지 않음
 
-AttributeSet을 직접 읽는대신, obtainStyledAttributes() 메서드를 이용하여 AttributeSet을 전달하여 문제를 해결할 수 있습니다.
+AttributeSet을 직접 읽는대신, obtainStyledAttributes() 메서드를 이용하여 AttributeSet을 전달하여 문제를 해결할 수 있습니다.</br>
 obtainStyledAttributes() 메서드는 참조를 해제하고 스타일이 지정된 TypedArray 값 배열을 전달합니다.
 
 안드로이드 리소스 컴파일러는 res 디렉터리의 각 <declare-styleable> 리소스에 의해 생성된 R.java에 있는 속성 id와 배열의 각 속성에 대한 인덱스를 정의하는 상수 set들을 모두 정의하고, 미리 정의된 상수를 사용하여 TypedArray에서 특성을 읽습니다.
@@ -218,13 +213,13 @@ public PieChart(Context context, AttributeSet attrs) {
 }
 ```
 
-    * TypedArray 객체는 공유 resource이므로 사용 후 반드시 재활용해야 합니다. 이를 위해 try-catch문의 finally에서 recycle()을 호출합니다. 
+    * TypedArray 객체는 공유 resource이므로 사용 후 반드시 재활용해야 합니다. 이를 위해 try-catch문의 finally에서 recycle()을 호출합니다. </br>
 이 메서드를 통하여 할당되어 있던 메모리를 즉시 반환하여 GC 될 때까지 기다리지 않아도 됩니다.
 
 
 #### Add Properties and Events
 
-Attributes는 동작 및 모양을 제어하는 강력한 방법이지만, 뷰가 초기화되었을 때만 읽을 수 있습니다. 
+Attributes는 동작 및 모양을 제어하는 강력한 방법이지만, 뷰가 초기화되었을 때만 읽을 수 있습니다. </br>
 동적인 동작을 제공하려면, 각 custom attribute에 대한 getter와 setter 메서드를 정의해야 합니다.
 
 ``` java
@@ -239,23 +234,22 @@ public void setShowText(boolean showText) {
 }
 ```
 
-setter에서 invalidate()와 requestLayout()메서드를 호출하는 것은 뷰가 안정적으로 동작하는지 확인하기 위함입니다.
-외형에 영향을 주는 속성을 변경한 경우 뷰를 무효화하여 시스템에게 뷰를 다시 그려야 한다는 점을 알려주어야 합니다.
+setter에서 invalidate()와 requestLayout()메서드를 호출하는 것은 뷰가 안정적으로 동작하는지 확인하기 위함입니다.</br>
+외형에 영향을 주는 속성을 변경한 경우 뷰를 무효화하여 시스템에게 뷰를 다시 그려야 한다는 점을 알려주어야 합니다.</br>
 마찬가지로 크기나 모양에 영향을 주는 속성이 변경되었을 때도 새로운 레이아웃을 요청해야 하며, 이러한 메소드 호출을 잊어버린다면 찾기 힘든 버그가 생길 수 있습니다.
 
-    * invalidate() : 이 메서드를 호출하면 해당 뷰 전체가 무효화 됩니다(뷰를 다시 그리도록 요청).
-주의할 사항은 반드시 UI스레드에서 호출해야 하며, UI스레드가 아닌 스레드에서 호출하려면 postInvalidate()메서드를 사용해야 합니다.
+    * invalidate() : 이 메서드를 호출하면 해당 뷰 전체가 무효화 됩니다(뷰를 다시 그리도록 요청). </br>주의할 사항은 반드시 UI스레드에서 호출해야 하며, UI스레드가 아닌 스레드에서 호출하려면 </br>postInvalidate()메서드를 사용해야 합니다.
 
     * requestLayout() : 이 메서드를 호출하면 크기와 위치를 다시 조정하도록 요청합니다(레이아웃을 갱신).
 
 ![메서드 호출 순서](http://cfile7.uf.tistory.com/image/211625375716700B04EAB6)
 
-또한 커스텀 뷰는 중요한 이벤트를 전달하기 위한 이벤트 리스너를 지원해야 합니다.
+또한 커스텀 뷰는 중요한 이벤트를 전달하기 위한 이벤트 리스너를 지원해야 합니다.</br>
 만약 당신이 커스텀 뷰의 유일한 사용자일경우 속성과 이벤트를 공유하는것을 잊을 수 있는데, 뷰의 인터페이스를 신중하게 정의하는데 시간을 많이 할애한다면 향후 유지관리를 쉽게 할 수 있습니다.
 
 #### Design For Accessibility
 
-커스텀 뷰는 넓은 범위의 사용자를 고려하여 지원해야 합니다(터치스크린을 보지 못하거나 사용하지 못하는 사용자들이 포함된다). 
+커스텀 뷰는 넓은 범위의 사용자를 고려하여 지원해야 합니다(터치스크린을 보지 못하거나 사용하지 못하는 사용자들이 포함된다). </br>
 이러한 사용자들을 지원하기 위해서는 다음을 수행해야 합니다.
 
 - android:contentDescription 속성을 사용하여 입력란에 라벨을 지정
@@ -267,8 +261,8 @@ setter에서 invalidate()와 requestLayout()메서드를 호출하는 것은 뷰
 
 #### Override onDraw()
 
-커스텀 뷰를 그릴때 가장 중요한 단계는 onDraw() 메서드를 재정의 하는 단계입니다.
-onDraw()의 파라미터는 뷰가 자신을 그릴 때 사용할 수 있는 Canvas 객체이며, Canvas 클래스는 텍스트, 선, 비트맵 등 다른 많은 그래픽 primitive를 그리는 방법을 정의합니다.
+커스텀 뷰를 그릴때 가장 중요한 단계는 onDraw() 메서드를 재정의 하는 단계입니다.</br>
+onDraw()의 파라미터는 뷰가 자신을 그릴 때 사용할 수 있는 Canvas 객체이며, Canvas 클래스는 텍스트, 선, 비트맵 등 다른 많은 그래픽 primitive를 그리는 방법을 정의합니다.</br>
 이러한 onDraw() 메서드를 이용하여 커스텀 사용자 인터페이스를 만들 수 있습니다.
 
 #### Create Drawing Objects
@@ -278,7 +272,7 @@ android.graphics 프레임워크는 두 가지 영역의 그리기로 나뉩니�
 - Canvas에서 무엇을 그릴지.
 - Paint에서 어떻게 그릴지.
 
-예를들어 Canvas는 선을 그리는 메서드를 제공하고 Paint는 선의 색상을 정의하는 메서드를 정의합니다.
+예를들어 Canvas는 선을 그리는 메서드를 제공하고 Paint는 선의 색상을 정의하는 메서드를 정의합니다.</br>
 간단히 말해 Canvas는 화면에 그릴 모양을 정의하고, Paint는 그릴 모양의 색상, 스타일, 글꼴 등을 정의합니다.
 
 따라서, 무언가를 그리기 전에 하나 이상의 Paint 객체를 만들어야 합니다.
@@ -304,18 +298,18 @@ private void init() {
    ...
 ```
 
-객체를 미리 생성하는 것은 중요한 최적화 작업입니다.
-뷰는 매우 빈번하게 다시 그려지고, 여러 드로잉 객체들은 값비싼 초기화를 필요로 합니다.
+객체를 미리 생성하는 것은 중요한 최적화 작업입니다.</br>
+뷰는 매우 빈번하게 다시 그려지고, 여러 드로잉 객체들은 값비싼 초기화를 필요로 합니다.</br>
 onDraw() 메서드 내에서 드로잉 객체를 만들게 되면 성능이 크게 저하되고, UI가 느리게 보일 수 있습니다.
 
 #### Handle Layout Events
 
-커스텀 뷰를 제대로 그리기 위해서는 크기를 알아야 합니다.
+커스텀 뷰를 제대로 그리기 위해서는 크기를 알아야 합니다.</br>
 절대로 화면에 보이는 크기로 가정해서는 안되며, 하나의 앱에서만 뷰를 사용하더라도 가로 또는 세로모드, 서로 다른 화면 크기, 다중 화면 밀도, 다양한 종횡비를 처리해야 합니다.
 
 뷰에서 측정을 처리하는 방법들이 있지만, 대부분은 재정의 할 필요 없이 onSizeChanged()만 재정의 해서 사용하면 됩니다.
 
-onSizeChanged() 메서드는 뷰에 처음으로 크기가 할당될 때 호출되며, 뷰의 크기가 변경될 때 다시 호출됩니다.
+onSizeChanged() 메서드는 뷰에 처음으로 크기가 할당될 때 호출되며, 뷰의 크기가 변경될 때 다시 호출됩니다.</br>
 onSizeChanged() 메서드에서는 뷰의 크기와 관련된 위치, 치수 및 기타값들을 계산해야 합니다.
 
 뷰의 크기가 지정되면 레이아웃 매니저는 모든 크기에 Padding값이 포함되어 있다고 가정하기 때문에 뷰의 크기를 계산할 때 패딩 값을 처리해야 합니다.
@@ -336,7 +330,7 @@ onSizeChanged() 메서드에서는 뷰의 크기와 관련된 위치, 치수 및
        float diameter = Math.min(ww, hh);
 ```
 
-만약 뷰의 레이아웃 파라미터를 보다 세밀하게 제어해야 한다면 onMeasure() 메서드를 구현하면 됩니다.
+만약 뷰의 레이아웃 파라미터를 보다 세밀하게 제어해야 한다면 onMeasure() 메서드를 구현하면 됩니다.</br>
 이 메서드의 파라미터는 View.MeasureSpec 값으로, 뷰의 크기가 최대값인지, 일정한 값인지 나타냅니다.
 
 ``` java
@@ -364,7 +358,7 @@ protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 
 #### Draw!
 
-객체 생성 및 측정 코드를 정의한 후에는 onDraw() 메서드를 구현합니다.
+객체 생성 및 측정 코드를 정의한 후에는 onDraw() 메서드를 구현합니다.</br>
 대부분의 뷰에서 몇가지 공통된 작업이 있는데 다음과 같습니다.
 
 - drawText()를 사용하여 텍스트를 그리고, setTypeface()를 호출하여 서체를 지정하며, setColor()를 호출하여 텍스트 색상을 지정합니다.
