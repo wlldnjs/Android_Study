@@ -84,7 +84,7 @@ Lukewarm start는 Cold Start동안 일어나는 동작의 일부를 포함하며
 Lukewarm start로 간주 될 수 있는 아래와 같은 많은 잠재적 상태들이 있습니다. </br>
 
 - 사용자는 앱을 종료(back out)했다가 다시 실행시킨다. 프로스세스가 계속 실행되었을 수도 있지만, 앱에서 onCreate() 호출을 통해 처음부터 다시 Activity를 만들어야 한다. 
-- 시스템이 메모리에서 앱을 삭제한 후 사용자가 다시 실행한다. 프로셋와 Activity는 재시작 되지만, Tack는 onCreate()를 통해 전달된 Saved Instance state bundle을 통해 약간의 이득을 취할 수 있다.
+- 시스템이 메모리에서 앱을 삭제한 후 사용자가 다시 실행한다. 프로셋와 Activity는 재시작 되지만, Task는 onCreate()를 통해 전달된 Saved Instance state bundle을 통해 약간의 이득을 취할 수 있다.
 
 
 #### Profiling Launch Performance
@@ -138,12 +138,12 @@ WaitTime: 2054
 Complete
 ```
 
--c와 -a 인자는 optional이며, Intent에 대해 <category>와 <action>을 지정할 수 있도록 합니다. </br>
+-c와 -a 인자는 optional이며, Intent에 대해 category와 action을 지정할 수 있도록 합니다. </br>
   
 
 #### Time to full display
 
-reportFullyDrawn() 를 사용하면 앱의 런칭부터 모든 리소스와 View 계층의 display까지의 경과 시간을 측정할 수 있습니다. </br>
+reportFullyDrawn() 메서드를 사용하면 앱의 런칭부터 모든 리소스와 View 계층의 display까지의 경과 시간을 측정할 수 있습니다. </br>
 앱이 Lazy loading 하는 경우 유용 하며, 앱은 window의 초기 drawing을 block하지 않고 비동기적으로 리소스를 로드하고 view 계층구조를 업데이트 합니다. </br>
 만약 lazy loading으로 인해 앱의 초기 display가 모든 리소스를 포함하지 않는다면, 별도로 로딩의 완료를 알려주어 리소스와 view를 display해야 합니다. </br>
 예를들어, UI가 모두 로드되어 일부 Test가 그려졌을지라도, 아직 앱이 네트워크로부터 가져와야 하는 이미지들은 display 되지 않았을 수 있습니다.</br>
@@ -154,7 +154,7 @@ reportFullyDrawn() 를 사용하면 앱의 런칭부터 모든 리소스와 View
 system_process I/ActivityManager: Fully drawn {package}/.MainActivity: +1s54ms
 ```
 
-만약 생각한것보다 display time이 늦다면, 이process에서 병목구간이 어디인지 찾아야 합니다. </br>
+만약 생각한것보다 display time이 늦다면, 이 process에서 병목구간이 어디인지 찾아야 합니다. </br>
 
 
 #### Identifying bottlenecks
@@ -195,20 +195,20 @@ inline tracing를 사용해서 아래 부분들을 확인할 수 있습니다. <
 
 - 앱의 초기 onCreate() 함수 
 - 앱이 초기화 하는 singleton 객체들
-- Bottleneck이 될 수 있는 Disk I/O, deserialization, 타이트한 loop
+- 병목현상이 일어날 수 있는 Disk I/O, deserialization, 타이트한 loop
 
 
 #### Solutions to the problem
 
 불필요한 초기화나 Disk I/O에 문제가 있는지 여부와 관계없이 이 솔루션은 lazy initializing을 요구하며, 즉각적으로 필요한 객체만 초기화합니다. </br>
 예를 들어 Global static 객체를 생성하는 것 보다는 앱이 객체에 처음 액세스 할때만 객체를 초기화 하는 Singleton pattern으로 변경하는 것이 유리합니다. </br>
-또한 Dagger같은  DI(dependency injection) framework를 사용하여 객체 및 종속성을 처음으로 주입할 때 생성하는 것을 고려하십시오. </br>
+또한 Dagger같은 DI(dependency injection) framework를 사용하여 객체 및 종속성을 처음으로 주입할 때 생성하는 것을 고려하십시오. </br>
 
 
 #### Heavy activity initialization
 
 Activity 생성은 종종 높은 오버헤드 작업을 많이 수반합니다. </br>
-성능개선을 위해 이 작업을 최적화할 방법들이 있습니다.</br>
+성능개선을 위해 아래와 같은 이슈들을 최적화 해야 합니다.</br>
 
 - 크고 복잡한 레이아웃의 Inflate
 - 디스크 혹은 네트워크 I/O로 인한 Screen Drawing의 Blocking
@@ -315,9 +315,6 @@ public class MyMainActivity extends AppCompatActivity {
 #### 원문 출처 :
 
  * [Launch-Time Performance](https://developer.android.com/topic/performance/launch-time.html) for Android Developers
- 
-#### 참고 자료 :
-
 
 </br>
 
