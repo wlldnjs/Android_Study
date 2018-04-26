@@ -113,16 +113,14 @@ Xml 상에서 placeholder를 생성하고 java 코드 상에서 placeholder.setC
 
 #### dimension constraints(치수 제약조건)
 
-> #### Percent size
+> #### match_constriant
+뷰의 최소/ 최대 크기를 지정해주는 것입니다.
+기존 minWidth와의 차이점은 wrap_content 일땐 [min/max]width 적용
+match_constraint일 때는 layout_constraintWidth_[min/max]가 적용됩니다.
 
-부모 뷰의 크기에 비례하여 뷰의 크기를 결정하는 방법.</br>
-
-부모 뷰에 맞출 속성을 match_constraint(0dp)로 선언한 후 layout_constraint[Width/Height]_default 속성으로 대상 축을 지정합니다.</br>
-
-	- spread : constraint 영역에 맞춤(기본 값)
-	- wrap : 뷰의 크기에 맞춤
-	- percent : constraint[Width/Height]_percent 속성에 선언한 비율에 맞춤
-
+- layout_constraintWidth_min및 layout_constraintHeight_min : constraint의 최소 크기를 설정합니다.
+- layout_constraintWidth_max및 layout_constraintHeight_max : constraint의 최대 크기를 설정합니다.
+- layout_constraintWidth_percent및 layout_constraintHeight_percent:constraint 크기를 부모의 비율로 설정합니다.
 
 </br>
 
