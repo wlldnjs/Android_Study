@@ -9,6 +9,7 @@
 
 특정 위젯에 제약조건을 적용하여 기준 위젯에 대해 각도와 거리를 적용 할 수 있습니다.</br>
 
+![](https://developer.android.com/reference/android/support/constraint/resources/images/circle1.png)
 ![원형 포지셔닝](https://developer.android.com/reference/android/support/constraint/resources/images/circle2.png)
 
 그렇게 하면 원 위에 위젯을 배치 할 수 있으며 아래와 같은 속성을 사용할 수 있습니다.</br>
