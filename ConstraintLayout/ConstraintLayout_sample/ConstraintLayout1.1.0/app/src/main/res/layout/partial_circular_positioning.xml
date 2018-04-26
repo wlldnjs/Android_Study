@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="200dp"
+    android:layout_height="200dp">
+
+    <ImageView
+        android:id="@+id/standard_point"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/black_dot"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:background="#000000"
+        app:layout_constraintCircle="@+id/standard_point"
+        app:layout_constraintCircleAngle="30"
+        app:layout_constraintCircleRadius="70dp"
+        />
+
+    <View
+        android:id="@+id/red_dot"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:background="#ff0000"
+        app:layout_constraintCircle="@+id/standard_point"
+        app:layout_constraintCircleAngle="170"
+        app:layout_constraintCircleRadius="55dp"
+        />
+
+    <View
+        android:id="@+id/blue_dot"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:background="#0000ff"
+        app:layout_constraintCircle="@+id/standard_point"
+        app:layout_constraintCircleAngle="290"
+        app:layout_constraintCircleRadius="90dp"
+        />
+</android.support.constraint.ConstraintLayout>
