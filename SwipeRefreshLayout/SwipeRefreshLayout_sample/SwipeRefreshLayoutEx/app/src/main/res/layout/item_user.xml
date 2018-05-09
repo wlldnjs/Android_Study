@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="client.kimjiwon.swiperefreshlayoutex.MainModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+
+        <ImageView
+            android:id="@+id/image_user"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@{data.image}"
+            tools:src="@drawable/ic_launcher_foreground" />
+
+        <TextView
+            android:id="@+id/text_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:text="@{data.name}"
+            android:textColor="#222222"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/text_age"
+            app:layout_constraintLeft_toRightOf="@+id/image_user"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="이름" />
+
+        <TextView
+            android:id="@+id/text_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(data.age)}"
+            android:textColor="#444444"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/text_name"
+            app:layout_constraintLeft_toRightOf="@+id/image_user"
+            app:layout_constraintTop_toBottomOf="@+id/text_name"
+            tools:text="나이" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
