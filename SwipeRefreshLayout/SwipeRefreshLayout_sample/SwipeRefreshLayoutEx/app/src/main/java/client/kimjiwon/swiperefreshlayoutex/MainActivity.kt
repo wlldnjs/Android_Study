@@ -39,13 +39,13 @@ class MainActivity : AppCompatActivity() {
             2 -> mBinding.swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_green_light)
             3 -> mBinding.swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_red_light, android.R.color.holo_blue_bright, android.R.color.holo_green_light)
         }
-        
-        var items: ArrayList<MainModel> = ArrayList()
-//        for (i: Int in 0..3) {
-        items.add(MainModel("김지원", index++, R.mipmap.ic_launcher_round))
-//        }
-        mRecyclerAdapter?.addItems(items)
-        Handler().postDelayed(Runnable { mBinding.swipeRefreshLayout.isRefreshing = false }, 2500)
+
+        Handler().postDelayed(Runnable {
+            var items: ArrayList<MainModel> = ArrayList()
+            items.add(MainModel("김지원", index++, R.mipmap.ic_launcher_round))
+            mRecyclerAdapter?.addItems(items)
+            mBinding.swipeRefreshLayout.isRefreshing = false
+        }, 2500)
     }
 
 }
