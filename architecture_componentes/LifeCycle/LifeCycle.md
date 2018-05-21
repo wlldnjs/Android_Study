@@ -127,7 +127,7 @@ lifecycle event는 프레임워크와 Lifecycle 클래스에서 전달되는 이
 
 아래는 Lifecycle 객체가 추적하는 컴포넌트의 상태입니다.
 
-!(생명주기 상태)[https://developer.android.com/images/topic/libraries/architecture/lifecycle-states.png]
+![생명주기 상태](https://developer.android.com/images/topic/libraries/architecture/lifecycle-states.png)
 
 클래스는 메서드에 어노테이션을 추가하여 생명주기 상태를 모니터링할 수 있습니다.
 
