@@ -244,12 +244,186 @@ public class MyFragment extends Fragment {
 }
 ```
 
+위에서 observe() 메서드는 첫번째 인자로 LifecycleOwner 인스턴스를 가지는 프래그먼트를 전달받음으로써 옵저버와 생명주기를 가진 객체가 바인딩됩니다.
+
+- Lifecycle 객체가 활성상태가 아니면, 관찰자는 값이 변경되더라도 호출되지 않는다.
+- Lifecycle 객체가 파괴된 후에, 관찰자는 자동으로 제거된다.
+
+LiveData 인스턴스가 라이프사이클을 인지할 수 있다는 점은 여러 Activity, Fragment, Service 사이에서 공유될 수 있다는 것을 의미합니다. 
+
+다음의 코드는 LiveData 클래스를 싱글턴 패턴으로 구현한 예제입니다.
+
+``` java
+public class StockLiveData extends LiveData<BigDecimal> {
+    private static StockLiveData sInstance;
+    private StockManager mStockManager;
+
+    private SimplePriceListener mListener = new SimplePriceListener() {
+        @Override
+        public void onPriceChanged(BigDecimal price) {
+            setValue(price);
+        }
+    };
+
+    @MainThread
+    public static StockLiveData get(String symbol) {
+        if (sInstance == null) {
+            sInstance = new StockLiveData(symbol);
+        }
+        return sInstance;
+    }
+
+    private StockLiveData(String symbol) {
+        mStockManager = new StockManager(symbol);
+    }
+
+    @Override
+    protected void onActive() {
+        mStockManager.requestPriceUpdates(mListener);
+    }
+
+    @Override
+    protected void onInactive() {
+        mStockManager.removeUpdates(mListener);
+    }
+}
+```
+
+그리고 프래그먼트에서는 다음과 같이 사용합니다.
+
+``` java
+public class MyFragment extends Fragment {
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        StockLiveData.get(getActivity()).observe(this, price -> {
+            // Update the UI.
+        });
+    }
+}
+```
+
+여러 프래그먼트와 액티비티들은 MyPriceListener 인스턴스를 observe할 수 있습니다.
+
+하나 이상의 UI컴포넌트가 화면에 보이고 활성화 상태일 때 LiveData는 시스템 서비스에만 연결 됩니다.
+
+### Transform LiveData
+
+LiveData 객체에 저장된 값을 옵저버에 전달하기 전에 값을 변경하거나, 다른 값을 기반으로 다른 LiveData 인스턴스를 반환해야 할 때가 있습니다.
+
+Lifecycle 패키지에는 이러한 경우를 지원하는 헬퍼 메서드를 가진 Transformations 클래스가 있습니다.
+
+
+Transformations.map() : LiveData 객체에 저장된 값에 함수를 적용하고, 다운스트림으로 결과를 전달합니다.
+
+``` java
+LiveData<User> userLiveData = ...;
+LiveData<String> userName = Transformations.map(userLiveData, user -> {
+    user.name + " " + user.lastName
+});
+```
+
+Transformations.switchMap() : map() 메서드와 비슷하게, LiveData 객체에 저장된 값에 함수를 적용하고, 언래핑하여 다운스트림으로 결과를 전달합니다.
+
+switchMap()에 전달되는 함수는 반드시 LiveData 인스턴스를 반환해야 합니다.
+
+``` java
+private LiveData<User> getUser(String id) {
+  ...;
+}
+
+LiveData<String> userId = ...;
+LiveData<User> user = Transformations.switchMap(userId, id -> getUser(id) );
+```
+
+변환 메서드를 사용하면 옵저버의 생명주기에 대한 정보를 전달할 수 있습니다.
+
+하지만 옵저버가 반환된 LiveData객체와 연결되지 않았다면 변환 메서드는 동작하지 않습니다.
+
+또한 변환은 느리게 동작하기 때문에 생명주기와 관련된 동작은 명시적으로 호출하거나 의존성이 없다면 암묵적으로 지나치게 됩니다.
+
+만약 ViewModel 인스턴스 안에 Lifecycle 인스턴스가 필요하다면, 변형을 사용하는 것이 좋습니다. 
+
+아래의 예제는 ViewModel을 이용하여 주소를 받아서 우편번호를 반환하는 예제입니다.
+
+``` java
+class MyViewModel extends ViewModel {
+    private final PostalCodeRepository repository;
+    public MyViewModel(PostalCodeRepository repository) {
+       this.repository = repository;
+    }
+
+    private LiveData<String> getPostalCode(String address) {
+       // DON'T DO THIS
+       return repository.getPostCode(address);
+    }
+}
+```
+
+UI 컴포넌트는 getPostCode() 메서드가 불릴때마다 이전의 LiveData 인스턴스를 해제하고, 새로운 인스턴스를 등록해야 합니다. 
+
+게다가 UI 컴포넌트가 재생성되면, 이전 호출값을 사용하는 대신 respository.getPostCode()메서드가 다시 트리거 됩니다.
+
+다음 예제는 위의 문제점을 해결하기 위해, 변형 방법으로 주소를 받아 우편번호를 조회합니다.
+
+``` java
+class MyViewModel extends ViewModel {
+    private final PostalCodeRepository repository;
+    private final MutableLiveData<String> addressInput = new MutableLiveData();
+    public final LiveData<String> postalCode =
+            Transformations.switchMap(addressInput, (address) -> {
+                return repository.getPostCode(address);
+             });
+
+  public MyViewModel(PostalCodeRepository repository) {
+      this.repository = repository
+  }
+
+  private void setInput(String address) {
+      addressInput.setValue(address);
+  }
+}
+```
+
+위의 예제에서 postalCode 필드는 절대 변하지 않기 때문에 public final로 정의되었습니다.
+
+postalCode는 addressInput 필드릐 변형으로 정의되었는데, 이는 addressInput이 변할때마다 repository.getPostCode() 메서드가 호출되는 것을 의미합니다.
+
+repository.getPostCode() 메서드가 호출될 때 활성화된 옵저버가 있다면 정상적으로 동작할 것이며, 활성화된 옵저버가 없다면 옵저버가 추가되기 전까지 계산이 수행되지 않습니다.
+
+이 메커니즘은 앱의 로우레벨단에서 상황에 따라 늦게 계산되는 LiveData 객체를 생성할 수 있도록 도와줍니다. 
+
+ViewModel 객체는 쉽게 LiveData 객체의 참조를 얻어서 그 위에 변형규칙을 적용할 수 있습니다. 
+
+
+#### Create new transformations
+
+앱에서 유용하게 적용할 수 있는 12개의 특정 변형들이 있지만, 기본적으로 제공되지는 않습니다. 
+
+변형을 직접 구현하려면, 다른 LiveData 객체의 상태를 확인할 수 있고, 자신이 생성한 이벤트를 처리할 수 있는 MediatorLiveData 클래스를 이용해야 합니다. 
+
+MediatorLiveData는 기존 LiveData 객체의 상태를 정확하게 전달합니다.
+
+
+### Merge multiple LiveData sources
+
+LiveData의 서브클래스인 MediatorLiveData는 여러개의 LiveData를 병합가능하도록 지원합니다. 
+
+MediatorLiveData 객체의 옵저버는 원래의 LiveData 객체 중 하나라도 변경될 때마다 트리거됩니다.
+
+예를들어, 앱의 UI에 로컬 DataBase 또는 네트워크로부터 갱신될 수 있는 LiveData 객체가 있다면, 다음과 같은 LiveData 객체들을 MediatorLiveData 객체에 추가할 수 있습니다.
+
+- 데이터베이스에 저장된 데이터와 관련된 LiveData 객체
+- 네트워크로부터 받아오는 데이터와 관련된 LiveData 객체
+
+UI에서는 양쪽 소스로부터의 업데이트 알림을 방지하기 위해 MediatorLiveData 객체의 상태만 관찰하면 됩니다.
 
 ---
 
 #### 참고 자료 :
 
 * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) for Android Developer
+
+* [안드로이드 아키텍쳐 컴포넌트(Android Architecture Components) - 3부](http://hyuncb.tistory.com/4?category=627854) for tistory
 
 </br>
 
